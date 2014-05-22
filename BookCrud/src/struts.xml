@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 简单主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="book" extends="struts-default">
+		<!-- 图书列表 -->
+		<action name="list" class="com.stx.book.action.BookAction" method="list">
+			<result>/BookList.jsp</result>
+		</action>
+		<!-- 编辑图书(加载图书) -->
+		<action name="edit" class="com.stx.book.action.BookAction" method="load">
+			<result>/BookEdit.jsp</result>
+		</action>
+		<!-- 保存图书(新增及更新) -->
+		<action name="store" class="com.stx.book.action.BookAction" method="store">
+			<result type="redirect">list.action</result>
+		</action>
+		<!-- 删除图书 -->
+		<action name="remove" class="com.stx.book.action.BookAction" method="remove">
+			<result type="redirect">list.action</result>
+		</action>
+	</package>
+
+</struts>
